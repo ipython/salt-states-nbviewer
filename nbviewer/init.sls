@@ -15,6 +15,13 @@ packages:
       - pandoc
       - libevent-dev
 
+# Fix up pip weirdness via some package managers & upgrade pip
+pippy:
+  cmd.run:
+    - name: wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python2.7
+  cmd.run:
+    - name: curl --show-error --retry 5 https://raw.github.com/pypa/pip/master/contrib/get-pip.py | sudo python2.7
+
 nbviewer-git:
   git.latest:
     - name: https://github.com/ipython/nbviewer.git
