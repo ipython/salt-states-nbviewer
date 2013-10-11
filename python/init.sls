@@ -13,14 +13,15 @@ setuptools:
   cmd.run:
     - name: wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python2.7
 
-# Install the most recent version of pip, authoratively
+# Install the most recent version of pip, manually
 pippin:
   cmd.run:
     - name: curl --show-error --retry 5 https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python2.7
     - reload_modules: true
 
 virtualenv:
-  pip.installed
-  requires:
+  pip.installed:
+    - reload_modules: true
+  require:
     - cmd: python-pip
 
