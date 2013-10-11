@@ -1,5 +1,6 @@
 base:
   '*':
+    - python
     - memcache
     - nbviewer
     - supervisor

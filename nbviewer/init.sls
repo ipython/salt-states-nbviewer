@@ -1,29 +1,15 @@
+# nbviewer binary dependencies
 packages:
   pkg:
     - installed
     - names:
-      - build-essential
-      - git
-      - wget
-      - curl
-      - python-dev
       - libzmq-dev
       - sqlite3
       - libsqlite3-dev
-      - python-pip
-      - python-virtualenv
       - pandoc
       - libevent-dev
 
-# Fix up pip weirdness via some package managers & upgrade pip
-setuptools:
-  cmd.run:
-    - name: wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | sudo python2.7
-
-pippin:
-  cmd.run:
-    - name: curl --show-error --retry 5 https://raw.github.com/pypa/pip/master/contrib/get-pip.py | sudo python2.7
-
+# Pull down the current codebase of nbviewer from github
 nbviewer-git:
   git.latest:
     - name: https://github.com/ipython/nbviewer.git
@@ -33,6 +19,7 @@ nbviewer-git:
     - require:
       - pkg: git
 
+# Install all the dependencies for nbviewer via its requirements.txt into a virtualenv
 /usr/share/nbviewer/venv:
     virtualenv.manage:
         - requirements: /usr/share/nbviewer/requirements.txt

@@ -1,6 +1,11 @@
+supervisor_install:
+    pip.installed:
+        - name: supervisor
+        - upgrade: True
+        - require:
+            - pkg: python-pip
+
 supervisor:
-    pkg:
-        - installed
     service:
         - running
         - watch:
@@ -14,20 +19,6 @@ supervisor:
         - require:
             - pkg: supervisor
 
-upgrade_supervisor:
-    pip.installed:
-        - name: supervisor
-        - upgrade: True
-        - require:
-            - pkg: python-pip
-
-#new version doesn't find debian config by default
-/etc/supervisord.conf:
-    file.symlink:
-        - target: /etc/supervisor/supervisord.conf
-        - require:
-            - pkg: supervisor
-            
 updates:
     cmd.run:
         - name: supervisorctl reread
