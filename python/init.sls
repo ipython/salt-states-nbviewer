@@ -4,7 +4,6 @@ packages:
     - installed
     - names:
       - build-essential
-      - git
       - wget
       - curl
       - python-dev

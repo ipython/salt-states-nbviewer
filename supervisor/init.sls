@@ -2,8 +2,6 @@ supervisor_install:
     pip.installed:
         - name: supervisor
         - upgrade: True
-        - require:
-            - pkg: python-pip
 
 supervisor:
     service:
@@ -16,8 +14,6 @@ supervisor:
         - source: salt://supervisor/nbviewer.conf.jinja
         - template: jinja
         - mode: 644
-        - require:
-            - pkg: supervisor
 
 updates:
     cmd.run:

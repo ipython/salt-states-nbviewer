@@ -3,6 +3,7 @@ packages:
   pkg:
     - installed
     - names:
+      - git
       - libzmq-dev
       - sqlite3
       - libsqlite3-dev
@@ -24,6 +25,4 @@ nbviewer-git:
     virtualenv.manage:
         - requirements: /usr/share/nbviewer/requirements.txt
         - clear: false
-        - require:
-            - pkg: python-virtualenv
 
