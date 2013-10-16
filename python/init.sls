@@ -1,5 +1,5 @@
 # All the build essentials to install python with up to date setuptools, pip
-packages:
+base-deps:
   pkg:
     - installed
     - names:
