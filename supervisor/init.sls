@@ -1,9 +1,9 @@
 supervisor_install:
     pkg.installed:
         - name: supervisor
-    pip.installed:
-        - name: supervisor
-        - upgrade: True
+        #    pip.installed:
+        #        - name: supervisor
+        #        - upgrade: True
 
 #directory node['supervisor']['dir'] do
 #  owner "root"
