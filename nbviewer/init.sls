@@ -13,8 +13,8 @@ packages:
 # Pull down the current codebase of nbviewer from github
 nbviewer-git:
   git.latest:
-    - name: https://github.com/ipython/nbviewer.git
-    - rev: master
+    - name: {{ salt['pillar.get']('nbviewer:location', 'https://github.com/ipython/nbviewer.git') }}
+    - rev: {{ salt['pillar.get']('nbviewer:rev', 'master') }}
     - target: /usr/share/nbviewer
     - force: true
     - require:
