@@ -14,11 +14,13 @@ supervisor:
         - template: jinja
         - mode: 644
 
-updates:
+reread:
     cmd.run:
         - name: supervisorctl reread
         - watch:
             - file: /etc/supervisor/conf.d/nbviewer.conf
+
+update:
     cmd.run:
         - name: supervisorctl update
         - watch:
