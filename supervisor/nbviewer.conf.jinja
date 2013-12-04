@@ -1,5 +1,5 @@
 [program:nbviewer]
-command=/usr/share/nbviewer/venv/bin/gunicorn -w 3 -b 0.0.0.0:8080 app:gist
+command=/usr/share/nbviewer/venv/bin/python -m nbviewer --port=8080 --threads=8
 numprocs=1
 numprocs_start=0
 process_name=%(program_name)s
