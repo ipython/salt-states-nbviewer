@@ -4,12 +4,13 @@ memcached:
           - memcached
           - libmemcached-dev
           - libmemcache-dev
+          - zlib1g-dev
     file.managed:
         - name: /etc/memcached.conf
         - source: salt://memcache/memcached.conf
     service.running:
         - enable: true
-        - watch: 
+        - watch:
             - file: /etc/memcached.conf
 
 python-memcache:
