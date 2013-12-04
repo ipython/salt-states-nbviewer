@@ -25,4 +25,3 @@ nbviewer-git:
     virtualenv.manage:
         - requirements: /usr/share/nbviewer/requirements.txt
         - clear: false
-
