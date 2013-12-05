@@ -10,7 +10,7 @@ packages:
       - pandoc
       - libevent-dev
 
-# Pull down the current codebase of nbviewer from github
+# Pull down the current codebase of nbviewer from github, unless pillar has something else for us
 nbviewer-git:
   git.latest:
     - name: {{ salt['pillar.get']('nbviewer:location', 'https://github.com/ipython/nbviewer.git') }}
