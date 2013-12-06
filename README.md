@@ -1,7 +1,7 @@
 salt-nbviewer
 =============
 
-Salt States for [nbviewer](/ipython/nbviewer)
+Salt States for [nbviewer](http://github.com/ipython/nbviewer)
 
 Simply installs nbviewer and its dependencies.
 
