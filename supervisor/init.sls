@@ -8,8 +8,8 @@ supervisor_install:
         - template: jinja
         - mode: 644
         - defaults:
-            environment: ''
-        {% if pillar['supervisor']['environment'] %}
+            environment: 'HELLO="WORLD"'
+        {% if pillar['supervisor']['environment'] != '' %}
         - context:
             environment: {{ pillar['supervisor']['environment'] }}
         {% endif %}
