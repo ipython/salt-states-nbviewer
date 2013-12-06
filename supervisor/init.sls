@@ -11,6 +11,8 @@ supervisor_install:
 supervisor:
     service:
         - running
+        - enable: True
+        - reload: True
         - watch:
             - file: /etc/supervisor/conf.d/nbviewer.conf
 
