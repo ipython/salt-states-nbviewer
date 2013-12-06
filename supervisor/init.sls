@@ -11,7 +11,7 @@ supervisor_install:
             environment: 'HELLO="WORLD"'
         {% if pillar['supervisor']['environment'] != '' %}
         - context:
-            environment: {{ pillar['supervisor']['environment'] }}
+            environment: '{{ pillar['supervisor']['environment'] }}'
         {% endif %}
 
 supervisor:
