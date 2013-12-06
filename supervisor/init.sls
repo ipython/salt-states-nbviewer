@@ -7,6 +7,12 @@ supervisor_install:
         - source: salt://supervisor/nbviewer.conf.jinja
         - template: jinja
         - mode: 644
+        - defaults:
+            environment: ''
+        {% if pillar['supervisor']['environment'] %}
+        - context:
+            environment: {{ pillar['supervisor']['environment'] }}
+        {% endif %}
 
 supervisor:
     service:
