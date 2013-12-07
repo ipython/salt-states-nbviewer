@@ -9,7 +9,7 @@ packages:
       - libsqlite3-dev
       - pandoc
       - libevent-dev
-      - libcurl4-openssl-dev
+      - libcurl4-gnutls-dev
 
 # Pull down the current codebase of nbviewer from github, unless pillar has something else for us
 nbviewer-git:
