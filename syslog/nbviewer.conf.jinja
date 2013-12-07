@@ -5,6 +5,18 @@
 #
 #  Default logging rules can be found in /etc/rsyslog.d/50-default.conf
 
+#$Modload imfile
+#
+#$InputFileName /var/log/supervisor/nbviewer*.log
+#$InputFileTag nbviewer
+#$InputFileStateFile nbviewer-file1
+#$InputFileSeverity info
+#$InputFileFacility local7
+#$InputRunFileMonitor
+#
+## Only entered once in case of following multiple files
+#$InputFilePollInterval 1
+
 $template LogentriesFormat,"{{ logentries_token }} %HOSTNAME% %syslogtag%%msg%\n"
 
 *.* @@api.logentries.com:10000;LogentriesFormat
