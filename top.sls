@@ -6,3 +6,4 @@ base:
     - syslog
     - supervisor
     - firewall
+    - fail2ban
