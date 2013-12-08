@@ -5,5 +5,5 @@ base:
     - nbviewer
     - syslog
     - supervisor
-    - firewall
     - fail2ban
+    - firewall
