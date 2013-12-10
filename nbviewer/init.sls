@@ -18,8 +18,13 @@ nbviewer-git:
     - rev: {{ salt['pillar.get']('nbviewer:rev', 'master') }}
     - target: /usr/share/nbviewer
     - force: true
+    - force_checkout: true
     - require:
       - pkg: git
+
+logdeploy:
+  cmd.run:
+    - name: "cd /usr/share/nbviewer && git log -1 --format='Deployed nbviewer %h %s' | logger"
 
 # Install all the dependencies for nbviewer via its requirements.txt into a virtualenv
 /usr/share/nbviewer/venv:
