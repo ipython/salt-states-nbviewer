@@ -21,7 +21,7 @@ fileserver_backend:
   - git
 
 gitfs_remotes:
-  - https://github.com/rgbkrk/salt-nbviewer.git
+  - https://github.com/rgbkrk/salt-states-nbviewer.git
 ```
 
 If doing local development, set `gitfs_remotes` to the local clone:
@@ -31,7 +31,7 @@ fileserver_backend:
   - git
 
 gitfs_remotes:
-  - file:///code/salt-nbviewer
+  - file:///code/salt-states-nbviewer
 ```
 
 Alternatively, just pull it down to where you want to reference it.
@@ -42,7 +42,7 @@ fileserver_backend:
 
 file_roots:
     base:
-        - /srv/salt/salt-nbviewer
+        - /srv/salt/salt-states-nbviewer
 
 ```
 
