@@ -38,7 +38,7 @@ Alternatively, just pull it down to where you want to reference it.
 
 ```
 fileserver_backend:
-    - root
+    - roots
 
 file_roots:
     base:
