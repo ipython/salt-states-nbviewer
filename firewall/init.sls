@@ -4,7 +4,7 @@ http:
     iptables.append:
         - chain: PREROUTING
         - table: nat
-        - interface: eth+
+        - in-interface: eth+
         - proto: tcp
         - dport: 80
         - jump: REDIRECT
