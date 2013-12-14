@@ -31,3 +31,35 @@ logdeploy:
     virtualenv.manage:
         - requirements: /usr/share/nbviewer/requirements.txt
         - clear: false
+
+# Manage the service with nbviewer
+/etc/supervisor/conf.d/nbviewer.conf:
+    file.managed:
+        - source: salt://supervisor/nbviewer.conf.jinja
+        - template: jinja
+        - mode: 644
+        - defaults:
+            environment: 'HELLO="WORLD"'
+        {% if pillar['supervisor']['environment'] != '' %}
+        - context:
+            environment: '{{ pillar['supervisor']['environment'] }}'
+        {% endif %}
+
+# Reread any configuration file changes
+reread:
+    cmd.run:
+        - name: supervisorctl reread
+        - watch:
+            - file: /etc/supervisor/conf.d/nbviewer.conf
+
+# Update from config
+update:
+    cmd.run:
+        - name: supervisorctl update
+        - watch:
+            - file: /etc/supervisor/conf.d/nbviewer.conf
+
+# Restart the process
+restart:
+    cmd.run:
+        - name: supervisorctl restart nbviewer
