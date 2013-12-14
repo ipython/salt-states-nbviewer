@@ -52,14 +52,8 @@ reread:
         - watch:
             - file: /etc/supervisor/conf.d/nbviewer.conf
 
-# Update from config
-update:
-    cmd.run:
-        - name: supervisorctl update
-        - watch:
-            - file: /etc/supervisor/conf.d/nbviewer.conf
-
-# Restart the process
+# Restart the process in case of code or environment variable updates
 restart:
     cmd.run:
         - name: supervisorctl restart nbviewer
+
