@@ -10,6 +10,7 @@ packages:
       - pandoc
       - libevent-dev
       - libcurl4-gnutls-dev
+      - libmemcached-dev
 
 # Pull down the current codebase of nbviewer from github, unless pillar has something else for us
 nbviewer-git:
