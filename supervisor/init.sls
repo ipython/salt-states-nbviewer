@@ -6,6 +6,6 @@ supervisor:
     service:
         - running
         - enable: True
-        - reload
+        - reload: True
         - watch:
           - pkg: supervisor
