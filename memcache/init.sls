@@ -4,6 +4,7 @@ memcached:
           - memcached
           - libmemcached-dev
           - libmemcache-dev
+          - libmemcached10
           - zlib1g-dev
     file.managed:
         - name: /etc/memcached.conf
