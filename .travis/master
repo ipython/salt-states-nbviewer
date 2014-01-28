@@ -1,0 +1,5 @@
+fileserver_backend:
+  - roots
+file_roots:
+  base:
+    - /srv/states/

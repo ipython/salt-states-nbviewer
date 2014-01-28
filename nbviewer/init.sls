@@ -39,12 +39,8 @@ logdeploy:
         - source: salt://supervisor/nbviewer.conf.jinja
         - template: jinja
         - mode: 644
-        - defaults:
-            environment: 'HELLO="WORLD"'
-        {% if pillar['supervisor']['environment'] != '' %}
         - context:
-            environment: '{{ pillar['supervisor']['environment'] }}'
-        {% endif %}
+            environment: '{{ salt['pillar.get']('supervisor:environment', '')}}'
 
 # Reread any configuration file changes
 reread:

@@ -1,0 +1,29 @@
+# Since salt/salt states aren't a language proper, this is a hackaround for now
+# I could probably add this to travis later.
+# https://github.com/travis-ci/travis-ci/issues/1549
+language: python
+python:
+- '2.7'
+
+before_install:
+  - sudo apt-get update
+  # Install salt master and salt minion on the same box
+  - curl -L http://bootstrap.saltstack.org | sudo sh -s -- git develop
+
+install:
+  # Copy these states 
+  - sudo mkdir -p /srv/salt/states
+  - sudo cp -r . /srv/salt/states
+  - sudo cp .travis/minion /etc/salt/minion
+  - sudo service salt-minion restart
+  # Additional debug help
+  - sudo cat /var/log/salt/*
+  # See what's available on travis
+  - sudo salt-call grains.items --local
+
+#script: sudo salt '*' state.highstate
+script:
+  - sudo salt-call state.show_highstate --local
+  - sudo salt-call state.show_lowstate --local
+  #- sudo salt-call state.highstate --local
+  #- wget 127.0.0.1:8888
