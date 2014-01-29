@@ -1,3 +1,4 @@
+{% if 'logentries' in pillar %}
 rsyslog-gnutls:
     pkg.installed
 
@@ -16,3 +17,5 @@ rsyslog:
         - reload: True
         - watch:
             - file: /etc/rsyslog.d/nbviewer.conf
+
+{% endif %}
