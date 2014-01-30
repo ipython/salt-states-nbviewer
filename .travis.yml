@@ -9,7 +9,7 @@ python:
 
 before_install:
   - sudo apt-get update
-  # Install salt master and salt minion on the same box
+  # Install salt minion for local use
   - curl -L http://bootstrap.saltstack.org | sudo sh -s -- git develop
   # Set up our installation bits
   - sudo mkdir -p /srv/salt/states
