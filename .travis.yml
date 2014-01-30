@@ -28,8 +28,8 @@ install:
   - sudo salt-call grains.items --local
 
 script:
-  - sudo salt-call state.show_highstate --local
-  - sudo salt-call state.show_lowstate --local
+  - sudo salt-call state.show_highstate --local --retcode-passthrough
+  - sudo salt-call state.show_lowstate --local --retcode-passthrough
   # Next step is doing some verification of the run
   #- sudo salt-call state.highstate --local
   #- wget 127.0.0.1:8888
