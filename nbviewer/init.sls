@@ -11,6 +11,7 @@ packages:
       - libevent-dev
       - libcurl4-gnutls-dev
       - libmemcached-dev
+      - supervisor
 
 # Pull down the current codebase of nbviewer from github, unless pillar has something else for us
 nbviewer-git:
@@ -33,6 +34,14 @@ logdeploy:
         - requirements: /usr/share/nbviewer/requirements.txt
         - clear: false
 
+nbviewer:
+  supervisord:
+    - running
+    - require:
+      - pkg: supervisor
+    - watch:
+      - file: /etc/supervisor/conf.d/nbviewer.conf
+
 # Manage the service with nbviewer
 /etc/supervisor/conf.d/nbviewer.conf:
     file.managed:
@@ -41,6 +50,8 @@ logdeploy:
         - mode: 644
         - context:
             environment: '{{ salt['pillar.get']('supervisor:environment', '')}}'
+        - requires:
+          - sls: supervisor
 
 # Reread any configuration file changes
 reread:
@@ -48,6 +59,8 @@ reread:
         - name: supervisorctl reread
         - watch:
             - file: /etc/supervisor/conf.d/nbviewer.conf
+        - requires:
+          - sls: supervisor
 
 # Restart the process in case of code or environment variable updates
 restart:

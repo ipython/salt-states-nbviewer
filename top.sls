@@ -2,8 +2,8 @@ base:
   '*':
     - python
     - memcache
-    - nbviewer
-    - syslog
     - supervisor
+    - syslog
+    - nbviewer
     - fail2ban
     - firewall

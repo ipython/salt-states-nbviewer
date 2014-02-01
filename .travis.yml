@@ -31,5 +31,7 @@ script:
   - sudo salt-call state.show_highstate --local --retcode-passthrough
   - sudo salt-call state.show_lowstate --local --retcode-passthrough
   # Next step is doing some verification of the run
-  #- sudo salt-call state.highstate --local
-  #- wget 127.0.0.1:8888
+  - sudo salt-call state.highstate --local
+  - wget -S -O - 127.0.0.1:8080
+  - wget -S -O - 127.0.0.1:8080/github/ipython/ipython/tree/master/examples/notebooks/
+  - wget -S -O - 127.0.0.1:8080/github/ipython/ipython/blob/master/examples/notebooks/Custom%20Display%20Logic.ipynb
