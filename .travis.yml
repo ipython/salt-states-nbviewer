@@ -1,8 +1,10 @@
 # Minimal Travis verfication for salt states
-
-# Since salt/salt states aren't a language proper, this is a hackaround for now
-# We should probably build a basebox for travis at some point
-#    (see https://github.com/travis-ci/travis-ci/issues/1549)
+#
+# Since salt/salt states aren't a proper language to Travis, this is a
+# hackaround for now.
+#
+# We should probably build a basebox for travis at some point, for the wider
+# SaltStack community. (see https://github.com/travis-ci/travis-ci/issues/1549)
 language: python
 python:
 - '2.7'
@@ -28,8 +30,14 @@ install:
   - sudo salt-call grains.items --local
 
 script:
+  # Minimally validate YAML and Jinja at a basic level
   - sudo salt-call state.show_highstate --local --retcode-passthrough
-  - sudo salt-call state.show_lowstate --local --retcode-passthrough
-  # Next step is doing some verification of the run
-  #- sudo salt-call state.highstate --local
-  #- wget 127.0.0.1:8888
+  
+  # Full on installation test
+  - sudo salt-call state.highstate --local
+  
+  # Light integration tests to make a real test suite for later
+  - wget -S -O - 127.0.0.1:8080 | grep "IPython Notebook Viewer"
+  - wget -S -O - 127.0.0.1:8080/github/ipython/ipython/tree/master/examples/notebooks/ | grep "Custom Display Logic.ipynb"
+  - wget -S -O rendered.html 127.0.0.1:8080/github/ipython/ipython/blob/master/examples/notebooks/Custom%20Display%20Logic.ipynb
+  - grep "Defining Custom Display Logic" rendered.html

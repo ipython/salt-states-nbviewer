@@ -4,13 +4,12 @@ packages:
     - installed
     - names:
       - git
-      - libzmq-dev
-      - sqlite3
-      - libsqlite3-dev
+      - libzmq3-dev
       - pandoc
       - libevent-dev
       - libcurl4-gnutls-dev
       - libmemcached-dev
+      - supervisor
 
 # Pull down the current codebase of nbviewer from github, unless pillar has something else for us
 nbviewer-git:
@@ -23,6 +22,7 @@ nbviewer-git:
     - require:
       - pkg: git
 
+# Log the deploy, mostly for sanity
 logdeploy:
   cmd.run:
     - name: "cd /usr/share/nbviewer && git log -1 --format='Deployed nbviewer %h %s' | logger"
@@ -32,6 +32,15 @@ logdeploy:
     virtualenv.manage:
         - requirements: /usr/share/nbviewer/requirements.txt
         - clear: false
+
+# nbviewer gets managed by supervisor
+nbviewer:
+  supervisord:
+    - running
+    - require:
+      - pkg: supervisor
+    - watch:
+      - file: /etc/supervisor/conf.d/nbviewer.conf
 
 # Manage the service with nbviewer
 /etc/supervisor/conf.d/nbviewer.conf:
