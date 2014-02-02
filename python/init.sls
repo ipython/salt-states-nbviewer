@@ -14,5 +14,5 @@ virtualenv:
   pip.installed:
     - reload_modules: true
   require:
-    - cmd: pippin
+    - cmd: pip
 
