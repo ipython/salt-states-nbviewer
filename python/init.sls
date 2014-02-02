@@ -7,14 +7,9 @@ base-deps:
       - wget
       - curl
       - python-dev
-
-python-setuptools:
-  pkg.installed
-
-python-pip:
-  pkg.installed
-  require:
-    - pkg: python-setuptools
+      - python-setuptools
+      - python-pip
+    - reload_modules: true
 
 virtualenv:
   pip.installed:
