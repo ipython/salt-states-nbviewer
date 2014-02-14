@@ -21,7 +21,7 @@ packages:
       - libzmq3-dev
       - pandoc
       - libevent-dev
-      - libcurl4-gnutls-dev
+      - libcurl4-openssl-dev
       - libmemcached-dev
       - {{ libmemcached }}
       - supervisor
