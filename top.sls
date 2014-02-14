@@ -1,5 +1,6 @@
 base:
   '*':
+    - lockbox
     - python
     - memcache
     - syslog
