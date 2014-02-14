@@ -24,7 +24,7 @@ install:
 
   # If anything bad happened on restarting the minion,
   # we'll want to see the logs
-  - sudo cat /var/log/salt/*
+  #- sudo cat /var/log/salt/*
 
   # For additional debugging, see what's in grains on a travis box
   - sudo salt-call grains.items --local
