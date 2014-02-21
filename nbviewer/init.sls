@@ -25,6 +25,7 @@ packages:
       - libmemcached-dev
       - {{ libmemcached }}
       - supervisor
+      - nodejs
 
 # Pull down the current codebase of nbviewer from github, unless pillar has something else for us
 nbviewer-git:
