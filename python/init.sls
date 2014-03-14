@@ -7,6 +7,7 @@ base-deps:
       - wget
       - curl
       - python-dev
+      - python-pip
     - reload_modules: true
 
 # Install the most recent version of setuptools

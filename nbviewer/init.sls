@@ -27,6 +27,17 @@ packages:
       - supervisor
       - nodejs
 
+# Pull down the latest and greatest ipython, unless pillar has something else for us
+ipython-git:
+  git.latest:
+    - name: {{ salt['pillar.get']('ipython:location', 'https://github.com/ipython/ipython.git') }}
+    - rev: {{ salt['pillar.get']('ipython:rev', 'master') }}
+    - target: /usr/share/ipython
+    - force: true
+    - force_checkout: true
+    - require:
+      - pkg: git
+
 # Pull down the current codebase of nbviewer from github, unless pillar has something else for us
 nbviewer-git:
   git.latest:
@@ -42,6 +53,17 @@ nbviewer-git:
 logdeploy:
   cmd.run:
     - name: "cd /usr/share/nbviewer && git log -1 --format='Deployed nbviewer %h %s' | logger"
+
+# Install IPython + deps
+pre-create-venv:
+    virtualenv.manage:
+        - name: /usr/share/nbviewer/venv
+        - clear: false
+
+ipython-pip:
+  pip.installed:
+    - name: -e /usr/share/ipython/[nbconvert]
+    - bin_env: /usr/share/nbviewer/venv/
 
 # Install all the dependencies for nbviewer via its requirements.txt into a virtualenv
 /usr/share/nbviewer/venv:
