@@ -62,8 +62,9 @@ pre-create-venv:
 
 ipython-pip:
   pip.installed:
-    - name: -e /usr/share/ipython/[nbconvert]
+    - editable: /usr/share/ipython/[nbconvert]
     - bin_env: /usr/share/nbviewer/venv/
+    - upgrade: true
 
 # Install all the dependencies for nbviewer via its requirements.txt into a virtualenv
 /usr/share/nbviewer/venv:
