@@ -55,8 +55,9 @@ logdeploy:
     - name: "cd /usr/share/nbviewer && git log -1 --format='Deployed nbviewer %h %s' | logger"
 
 # Install IPython + deps
-/usr/share/nbviewer/venv:
+pre-create-venv:
     virtualenv.manage:
+        - name: /usr/share/nbviewer/venv
         - clear: false
 
 ipython-pip:
