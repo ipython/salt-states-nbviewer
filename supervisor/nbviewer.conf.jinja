@@ -1,5 +1,5 @@
 [program:nbviewer]
-command=/usr/share/nbviewer/venv/bin/python -m nbviewer --port=8080 --threads=8
+command=/usr/share/nbviewer/venv/bin/python -m nbviewer --port=8080 --processes=8 --mc_threads=4
 numprocs=1
 numprocs_start=0
 process_name=%(program_name)s
