@@ -23,6 +23,9 @@ newrelic-sysmond-conf:
     - require:
       - pkg: newrelic-sysmond
 
+newrelic-admin:
+  pip.installed
+
 newrelic-plugin-agent:
   pip.installed
 
