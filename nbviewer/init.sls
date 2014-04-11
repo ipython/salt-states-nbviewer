@@ -83,6 +83,12 @@ nbviewer:
     - watch:
       - file: /etc/supervisor/conf.d/nbviewer.conf
 
+/usr/share/nbviewer/newrelic.ini:
+    file.managed:
+        - source: salt://newrelic/newrelic.ini
+        - template: jinja
+        - mode: 644
+
 # Manage the service with nbviewer
 /etc/supervisor/conf.d/nbviewer.conf:
     file.managed:
@@ -90,7 +96,10 @@ nbviewer:
         - template: jinja
         - mode: 644
         - context:
+            new_relic_config_file: /usr/share/nbviewer/newrelic.ini
             environment: '{{ salt['pillar.get']('supervisor:environment', '')}}'
+        - watch:
+          - file: /usr/share/nbviewer/newrelic.ini
 
 # Reread any configuration file changes
 reread:
@@ -103,4 +112,3 @@ reread:
 restart:
     cmd.run:
         - name: supervisorctl restart nbviewer
-
