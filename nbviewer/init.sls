@@ -35,6 +35,7 @@ ipython-git:
     - target: /usr/share/ipython
     - force: true
     - force_checkout: true
+    - submodules: true
     - require:
       - pkg: git
 
