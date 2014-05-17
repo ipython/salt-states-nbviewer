@@ -2,7 +2,7 @@
 # Travis CI.
 
 {% if grains['os'] == 'Ubuntu' %}
-  {% if grains['osrelease'] in ['12.10', '13.04', '13.10'] %}
+  {% if grains['osrelease'] in ['12.10', '13.04', '13.10', '14.04'] %}
     {% set libmemcached = "libmemcached10" %}
   {% else %} # grains['osrelease'] == '12.04' %}
     {% set libmemcached = "libmemcached6" %}
